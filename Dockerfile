@@ -14,11 +14,13 @@ RUN pip3 install -r ${SERVICE_DIR}/requirements.txt
 COPY . ${SERVICE_DIR}/
 
 # document default port
-ENV PORT=9080
+ENV PORT=8080
 EXPOSE ${PORT}
 #USER service
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-ENTRYPOINT FLASK_APP=application.py flask run --host=0.0.0.0 --port=${PORT}
+ENTRYPOINT ["python3"]
+
+CMD ["application.py"]
