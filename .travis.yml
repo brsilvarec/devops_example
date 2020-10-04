@@ -1,12 +1,23 @@
 language: shell
+services:
+  - docker
+env:
+  global:
+    - IMAGE_NAME=devops-example:latest
+    - REGISTRY_SERVER=us.icr.io
 script:
+  - docker build -t ${IMAGE_NAME} .
+  - docker run -it --entrypoint /bin/bash ${IMAGE_NAME} -c pytest unit_test
+after_success:
+  - docker login -u iamapikey -p "${IBM_CLOUD_API_KEY}" ${REGISTRY_SERVER}
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: docker push ${IMAGE_NAME}
+- after_deploy:
   - curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
   - ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r us-south
   - ibmcloud target --cf
   - ibmcloud cf install
-deploy:
-- provider: script
-    skip_cleanup: true
-    script: ibmcloud cf push
-- after_deploy:
+  - ibmcloud cf push
   - echo "Finished"
