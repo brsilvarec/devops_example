@@ -25,7 +25,7 @@ model_output = api.model('ModelOutput', {
 @api.route('/hello')
 class HelloWorld(Resource):
     def get(self):
-        return {'hello': 'world'}
+        return {'hello': 'world 1'}
 
 @api.route('/<string:todo_id>')
 class TodoSimple(Resource):
