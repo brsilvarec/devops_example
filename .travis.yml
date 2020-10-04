@@ -14,7 +14,7 @@ deploy:
   - provider: script
     skip_cleanup: true
     script: docker push ${IMAGE_NAME}
-- after_deploy:
+after_deploy:
   - curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
   - ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r us-south
   - ibmcloud target --cf
