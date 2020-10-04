@@ -4,7 +4,7 @@ MAINTAINER Bruno Silva "bruno.ufpe@gmail.com"
 
 LABEL "name"="devops_example"
 
-RUN apt-get update -y && apt-get install -y python3-pip
+RUN apt-get update -y && apt-get install -y python3-pip curl
 ENV SERVICE_DIR=/usr/local/share/service/mock_app
 WORKDIR ${SERVICE_DIR}/
 

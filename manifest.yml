@@ -1,0 +1,6 @@
+---
+applications:
+ - name: devops-test
+   random-route: true
+   memory: 128M
+

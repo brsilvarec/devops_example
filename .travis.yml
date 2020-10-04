@@ -1,0 +1,10 @@
+language: shell
+script:
+  - curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+  - ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r us-south
+  - ibmcloud target --cf
+  - ibmcloud cf install
+deploy:
+- provider: script
+    skip_cleanup: true
+    script: ibmcloud cf push
