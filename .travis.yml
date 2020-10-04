@@ -10,11 +10,7 @@ script:
   - docker run -it --entrypoint /bin/bash ${IMAGE_NAME} -c pytest unit_test
 after_success:
   - docker login -u iamapikey -p "${IBM_CLOUD_API_KEY}" ${REGISTRY_SERVER}
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: docker push ${IMAGE_NAME}
-after_deploy:
+  - docker push ${IMAGE_NAME}
   - curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
   - ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r us-south
   - ibmcloud target --cf
