@@ -8,3 +8,5 @@ deploy:
 - provider: script
     skip_cleanup: true
     script: ibmcloud cf push
+- after_deploy:
+  - echo "Finished"
