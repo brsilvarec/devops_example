@@ -146,3 +146,23 @@ docker run -it -p 5050:8080 devops_example:latest
 ```
 
 Com esse comando podemos rodar nosso projeto utilizando containers. Nesse caso, utilizamos um redirecionamento da porta `8080` do container para a porta do sistema local `5050`. Portanto, para acessar o endereço para utilizar o sistema `http://0.0.0.0:5050/`.
+
+
+
+## Receita para integração do projeto no `travis-ci.com`
+
+No arquivo do projeto `.travis.yml` temos os passos necessários para build do projeto no travis e upload do projeto na nuvem via IBM cloud foundry. No entanto, para que o `travis-ci.com` possa utilizar o seu projeto para deploy automatico na nuvem da IBM, é preciso que você informe o travis que o seu projeto possui integração contínua.
+
+Siga os passos a seguir:
+
+### 1- Link do projeto no travis.
+
+Deve-se fazer o link dos projetos do github para o travis para "avisar" ao travis que esse projeto possui integração contínua gerenciada por ele.
+
+![](imgs/Activate_github.png)
+
+Após ativar a aplicação a fornecer as permissões necessárias, você verá que o seu projeto foi adicionado ao Travi-ci dashboard.
+
+![](imgs/Added_project.png)
+
+
