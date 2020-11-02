@@ -126,3 +126,23 @@ unit_tests/test_appllication.py::TestApplication::test_put_get PASSED           
 
 ================================================= 2 passed in 0.25s ==================================================
 ```
+
+
+## Receita para criação de docker image e execução do serviço via container.
+
+### 1- Criação da imagem do sistema
+Para criar uma imagem docker com a aplicação desse repositorio basta executar o comando.
+
+```
+docker build --tag devops_example:latest .
+```
+
+Esse comando executará via docker os comandos contidos no arquivo `Dockerfile` que basicamente criará um container ubuntu com python e arquivos necessários para execução deste projeto.
+
+### 2- Execução do projeto via docker
+
+```
+docker run -it -p 5050:8080 devops_example:latest
+```
+
+Com esse comando podemos rodar nosso projeto utilizando containers. Nesse caso, utilizamos um redirecionamento da porta `8080` do container para a porta do sistema local `5050`. Portanto, para acessar o endereço para utilizar o sistema `http://0.0.0.0:5050/`.
