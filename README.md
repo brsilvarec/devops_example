@@ -165,4 +165,14 @@ Após ativar a aplicação a fornecer as permissões necessárias, você verá q
 
 ![](imgs/Added_project.png)
 
+### 2- Criar chave de acesso da IBMCloud
 
+Nesse ponto, o travis precisa de "permissão" da IBMCloud para subir o serviço para a Nuvem. Para tal atividade, basta você criar e copiar uma chave de acesso da sua conta da IBM cloud no endereço (imgs/IBMCloud_Access.png).
+
+![](imgs/IBMCloud_Access.png)*Copiar chave de acesso para IBM Cloud*
+
+### 3- Copiar a chave de acesso da IBM cloud para a variável `IBM_CLOUD_API_KEY` do travis-ci.
+
+Adicionar a chave de acesso da IBM cloud para o projeto travis-ci usando endereço https://travis-ci.com/github/<NOME_DO_USUARIO>/devops_example/settings. Lembre-se de trocar a string `<NOME_DO_USUARIO>` para o seu usuário github. No meu caso, o usuário é brsilvarec. Então, o endereço de configuração do projeto é https://travis-ci.com/github/brsilvarec/devops_example/settings. 
+
+![](imgs/IBMTravis_KEY.png)*Adicionar chave de acesso para IBM Cloud no Travis-CI*
