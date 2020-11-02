@@ -31,7 +31,7 @@ https://www.python.org/
 https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli
 
 
-## Receita para instalação e integração do microsserviço.
+## Receita para instalação local microsserviço.
 
 Para reprodução desse material, deve-se seguir os seguintes passos.
 
@@ -85,3 +85,44 @@ python application.py
 ```
 
 Após isso, o microsserviço poderá ser acessado pelo endereço http://0.0.0.0:8080/
+
+A saída do sistema será algo parecido com o que segue.
+``` bash
+> $ python application.py                                                                     [±main ●]
+ * Serving Flask app "application" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 163-170-228
+127.0.0.1 - - [02/Nov/2020 15:46:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [02/Nov/2020 15:46:51] "GET /swagger.json HTTP/1.1" 200 -
+127.0.0.1 - - [02/Nov/2020 15:48:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [02/Nov/2020 15:48:12] "GET /swagger.json HTTP/1.1" 200 -
+```
+### 5- Execução de testes no sistema
+
+O sistema permite a execução de testes para verificação do funcionamento das chamadas da API (vide Arquivo `unit_tests/test_appllication.py`).
+
+```
+pytest -v
+```
+
+Exemplo de saída dos testes.
+
+```bash
+ > $ pytest -v                                                                                 [±main ●]
+================================================ test session starts =================================================
+platform darwin -- Python 3.7.3, pytest-6.1.1, py-1.9.0, pluggy-0.13.1 -- /Users/brunosilva/deleteme/devops_example/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/brunosilva/deleteme/devops_example
+collected 2 items
+
+unit_tests/test_appllication.py::TestApplication::test_hello_world PASSED                                      [ 50%]
+unit_tests/test_appllication.py::TestApplication::test_put_get PASSED                                          [100%]
+
+================================================= 2 passed in 0.25s ==================================================
+```
